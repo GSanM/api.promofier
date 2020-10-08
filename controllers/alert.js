@@ -5,8 +5,10 @@ module.exports = alertController = {
 
     createAlert: (req, res) => {
         let {
+            user_id,
             title,
             price,
+            price_gap,
             keyword,
             url,
             description
@@ -14,8 +16,10 @@ module.exports = alertController = {
         
         alertService
             .createAlert(
+                user_id,
                 title,
                 price,
+                price_gap,
                 keyword,
                 url,
                 description

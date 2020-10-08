@@ -2,12 +2,12 @@ request = require('request');
 cheerio = require('cheerio');
 fs      = require('fs');
 
-module.exports = KabumSpider = {
-    shouldSend: (
+module.exports = kabumSpider = {
+    getProduct: (
         url
     ) => {
         return new Promise((resolve, reject) => {
-            var result = request(url, (err, res, body) => {
+            request(url, (err, res, body) => {
                 if(err)
                     console.log('Error: ' + err);
                 

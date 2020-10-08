@@ -1,4 +1,8 @@
 var structure = new mongoose.Schema({
+    user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    },
     title: {
         type: String,
         required: true
@@ -7,9 +11,13 @@ var structure = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    price_gap: {
+        type: Number,
+        required: false
+    },
     keyword: {
         type: String,
-        required: true
+        required: false
     },
     url: {
         type: String,
@@ -19,6 +27,6 @@ var structure = new mongoose.Schema({
         type: String,
         required: false
     },
-})
+});
 structure.set('timestamps', true);
 module.exports = promofier.model('alert', structure);

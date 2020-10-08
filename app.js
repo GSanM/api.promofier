@@ -5,7 +5,7 @@ express = require("express");
 mongoose = require("mongoose");
 config = require("./config/config");
 socketIO = require("socket.io");
-//Promise = require("bluebird");
+Promise = require("bluebird");
 var bodyParser = require("body-parser");
 const database = require("./config/db");
 
@@ -83,13 +83,7 @@ database
         Sentry.captureException(e);
     });
 
-var alertRoutes = require("./routes/alert.js");
-app.use("/alert", alertRoutes);
-
-var kabumRoutes = require("./routes/kabum.js");
-app.use("/kabum", kabumRoutes);
-
-// var noAuthRoutes = require("./routes/noauth/routes.js");
-// app.use("/noauth", noAuthRoutes);
+var routes = require("./routes/routes.js");
+app.use("/api/v1", routes);
 
 module.exports = app;

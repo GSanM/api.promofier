@@ -1,6 +1,8 @@
 const userModel = require("../models/user");
 
 module.exports = userServices = {
+    
+    //Create a new user
     createUser: (name, surname, email, username, password) => {
         return new Promise((resolve, reject) => {
             name = name.toLowerCase();
@@ -10,11 +12,18 @@ module.exports = userServices = {
     
             Promise.props({
                 userWithEmail: userServices.getUserByEmail(email),
+                userWithUsername: userServices.getUserByUsername(username)
             })
             .then((info) => {
+                //Search for duplicate user info
                 if (info.userWithEmail != undefined) {
                     reject({
                         message: "Já existe um usuário cadastrado com este email!",
+                    });
+                }
+                else if (info.userWithUsername != undefined) {
+                    reject({
+                        message: "Já existe um usuário cadastrado com este username!",
                     });
                 }
                 else {
@@ -41,6 +50,7 @@ module.exports = userServices = {
         });
     },
 
+    //Get user passing email
     getUserByEmail: (email) => {
         if (email) {
             return userModel
@@ -55,6 +65,21 @@ module.exports = userServices = {
         }
     },
 
+    getUserByUsername: (username) => {
+        if (username) {
+            return userModel
+            .findOne({
+                "username": username
+            })
+            .exec();
+        } else {
+            return new Promise((resolve, reject) => {
+                resolve(undefined);
+            });
+        }
+    },
+
+    //Get a list of all users
     getUsers: () => {
         return userModel.find({}).exec();
     },

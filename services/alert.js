@@ -1,6 +1,8 @@
 const alertModel = require("../models/alert");
 
 module.exports = alertServices = {
+    
+    //Create a new alert
     createAlert: (
         user_id,
         title,

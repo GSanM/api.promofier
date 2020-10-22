@@ -3,6 +3,7 @@ const alertService = require("../services/alert");
 
 module.exports = alertController = {
 
+    //Create new alert, calling alertService
     createAlert: (req, res) => {
         let {
             user_id,

@@ -4,6 +4,7 @@ var urlDbpromofier = process.env.URLDB || config.db.promofier;
 
 console.log("VERSAO::" + mongoose.version);
 
+//Connect to db
 const connect = async () => {
       promofier = mongoose.createConnection(urlDbpromofier, {
          useNewUrlParser: true,

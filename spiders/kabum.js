@@ -3,6 +3,8 @@ cheerio = require('cheerio');
 fs      = require('fs');
 
 module.exports = kabumSpider = {
+    
+    //Get product based on Kabum HTML structure
     getProduct: (
         url
     ) => {
@@ -19,8 +21,8 @@ module.exports = kabumSpider = {
                 
                 if(price == '')
                 {
-                    var price = $('div.preco_traco').find('div.preco_normal').text().trim();
-                    var price_cash = $('span.preco_desconto').find('strong').text().trim();
+                    price = $('div.preco_traco').find('div.preco_normal').text().trim();
+                    price_cash = $('span.preco_desconto').find('strong').text().trim();
                 }
                 
                 const res_body = {

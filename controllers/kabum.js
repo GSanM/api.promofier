@@ -3,6 +3,7 @@ const alertModel = require("../models/alert");
 
 module.exports = kabumController = {
 
+    //Verify product price and compare with desired price, to know if it should send a notification
     shouldSend: async (req, res) => {
 
         var alert_from_db = await alertModel.findOne({"_id": req.body.alert});
@@ -45,6 +46,7 @@ module.exports = kabumController = {
             });         
     },
 
+    //Get product infos
     getProduct: async (req, res) => {
         let {
             alert
@@ -57,6 +59,7 @@ module.exports = kabumController = {
                 alert_obj.url
             )
             .then((result) => {
+                //Filter price format, to alter commas and dots and get only numbers
                 var result_price = result.price_cash.replace(/^\D+/g, '');
                 result_price = result_price.replace(/\./g, '');
                 result_price = parseFloat(result_price.replace(/\,/g, '.'));

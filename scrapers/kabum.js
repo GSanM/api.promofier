@@ -2,7 +2,7 @@ request = require('request');
 cheerio = require('cheerio');
 fs      = require('fs');
 
-module.exports = kabumSpider = {
+module.exports = kabumScraper = {
     
     //Get product based on Kabum HTML structure
     getProduct: (

@@ -1,43 +1,43 @@
 # API Promofier
 
-A ideia da API promofier é utilizar de spiders/crawlers para monitorar preços de produtos vendidos em alguns sites da internet, para comunicação com um app que irá notificar caso o preço esteja igual ou abaixo do desejado.
+The idea behind the Promofier API is to use scrapers to monitor the prices of products sold on some websites, and to communicate with an app that will notify the user when a price is equal to or below the desired one.
 
-### Iniciando
+### Getting started
 
-Para iniciar o serviço, basta executar o comando abaixo para instalar os módulos necessários
+To start the service, run the command below to install the required modules
 
 ```
 npm install
 ```
 
-E o comando abaixo para rodar o serviço com o nodemon (instalando-o globalmente)
+Then run the command below to install nodemon globally, which is used to run the service
 
 ```
 npm install -g nodemon
 ```
 
-Em seguida, iniciar a aplicação através do comando
+Then start the application with the command
  
 ```
 npm start
 ```
-OBS: o serviço está configurado para localhost, assim como as suas bases no MongoDB, por isso, é necessário ter um servidor de MongoDB instalado localmente, ou reconfigurar o endereçamento da base, através do arquivo config/config.js.
+NOTE: the service is configured for localhost, as are its MongoDB databases, so you need a MongoDB server installed locally, or you can reconfigure the database address in the config/config.js file.
 
 ### Endpoints
 
-Todos os endpoints da API iniciam com /api/v1
+All API endpoints start with /api/v1
 
-#### Criar usuário
+#### Create user
 
 > POST localhost/api/v1/user/create
 
 ##### Body
 ```json
 {
-    "name": "Fulano",
-    "surname": "de Tal",
-    "email": "fulano@gmail.com",
-    "username": "fulano",
+    "name": "John",
+    "surname": "Doe",
+    "email": "johndoe@gmail.com",
+    "username": "johndoe",
     "password": "1234"
 }
 ```
@@ -70,7 +70,7 @@ Todos os endpoints da API iniciam com /api/v1
 
 ---
 
-#### Criar alerta
+#### Create alert
 
 > POST localhost/api/v1/alert/create
 
@@ -110,13 +110,13 @@ Todos os endpoints da API iniciam com /api/v1
 ```
 ###### HTTP 500
 
-O caso de falha ainda não foi implementado
+The failure case has not been implemented yet
 
 ---
 
-#### Dados do produto
+#### Product data
 
-Recupera dados do produto, passando o id do alerta criado
+Retrieves the product data, given the id of the created alert
 
 > GET localhost/api/v1/kabum/product
 
@@ -134,7 +134,7 @@ Recupera dados do produto, passando o id do alerta criado
 
 ```json
 {
-    "title": "Processador AMD Ryzen 7 3700X 32MB 3.6GHz (4.4GHz Max Turbo) AM4, Sem V�deo - 100-100000071BOX",
+    "title": "Processador AMD Ryzen 7 3700X 32MB 3.6GHz (4.4GHz Max Turbo) AM4, Sem Vídeo - 100-100000071BOX",
     "price": "R$ 2.552,82",
     "price_cash": "R$ 2.169,90"
 }
@@ -142,13 +142,13 @@ Recupera dados do produto, passando o id do alerta criado
 
 ###### HTTP 500
 
-O caso de falha ainda não foi implementado
+The failure case has not been implemented yet
 
 ---
 
-#### Devo enviar uma notificação?
+#### Should I send a notification?
 
-Compara o preço do produto com o preço desejado, e responde baseado nisso
+Compares the product price with the desired price, and responds based on that
 
 > GET localhost/api/v1/kabum/shouldsend
 
@@ -176,7 +176,7 @@ Compara o preço do produto com o preço desejado, e responde baseado nisso
 {
     "send": true,
     "message": "O produto que você queria está no preço desejado!",
-    "title": "Processador AMD Ryzen 7 3700X 32MB 3.6GHz (4.4GHz Max Turbo) AM4, Sem V�deo - 100-100000071BOX",
+    "title": "Processador AMD Ryzen 7 3700X 32MB 3.6GHz (4.4GHz Max Turbo) AM4, Sem Vídeo - 100-100000071BOX",
     "price": "R$ 2.552,82",
     "price_cash": "R$ 2.169,90"
 }
@@ -184,6 +184,6 @@ Compara o preço do produto com o preço desejado, e responde baseado nisso
 
 ###### HTTP 500
 
-O caso de falha ainda não foi implementado
+The failure case has not been implemented yet
 
 ---

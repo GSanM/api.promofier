@@ -1,4 +1,4 @@
-const kabumSpider = require("../spiders/kabum");
+const kabumScraper = require("../scrapers/kabum");
 const alertModel = require("../models/alert");
 
 module.exports = kabumController = {
@@ -8,7 +8,7 @@ module.exports = kabumController = {
 
         var alert_from_db = await alertModel.findOne({"_id": req.body.alert});
 
-        kabumSpider
+        kabumScraper
             .getProduct(
                 alert_from_db.url
             )
@@ -54,7 +54,7 @@ module.exports = kabumController = {
         
         var alert_obj = await alertModel.findOne({"_id": alert})
         
-        kabumSpider
+        kabumScraper
             .getProduct(
                 alert_obj.url
             )
